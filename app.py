@@ -83,7 +83,7 @@ def prediction_page():
                     be random.
                 """)
             values = get_fields(options[i])
-            st.markdown("##### **Days Taken:** " + str(x.shape[0]))
+            st.markdown("##### **Days Trained:** " + str(x.shape[0]))
             confidence_score_line = st.empty()
             remark = st.empty()
         response = predictions_algo[options[i]](x, y,
