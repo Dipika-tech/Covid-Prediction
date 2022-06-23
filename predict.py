@@ -35,7 +35,7 @@ def get_prediction_input(df, d1, d2, country, prediction_for, predict_days):
 
 
 @st.cache(allow_output_mutation=True)
-def linear_regression(x, y, days_to_predict, values):
+def linear_regression(x, y, days_to_predict, values, prediction_for):
     response = {}
     response['same_future_data'] = False
     x = x.reshape(-1, 1)
@@ -49,7 +49,7 @@ def linear_regression(x, y, days_to_predict, values):
     response['predict_graph'] = plot_chart(Fx.flatten(), Fp.astype(int).flatten(),
                                            name="Prediction",
                                            color="Blue",
-                                           title="Future Prediction for Confirmed Cases By days",
+                                           title="Future Prediction for "+prediction_for+" Cases By days",
                                            yaxis_title="Predicted Confirm Cases"
                                            )
     response['confidence_score'] = str(round(reg.score(x, y) * 100, 2))
@@ -59,7 +59,7 @@ def linear_regression(x, y, days_to_predict, values):
 
 
 @st.cache(allow_output_mutation=True)
-def polynomial_regression(x, y, days_to_predict, values):
+def polynomial_regression(x, y, days_to_predict, values, prediction_for):
     response = {}
     response['same_future_data'] = False
     x = x.reshape(-1, 1)
@@ -75,7 +75,7 @@ def polynomial_regression(x, y, days_to_predict, values):
     response['predict_graph'] = plot_chart(Fx.flatten(), Fp.astype(int).flatten(),
                                            name="Prediction",
                                            color="Blue",
-                                           title="Future Prediction for Confirmed Cases By days",
+                                           title="Future Prediction for "+prediction_for+" Cases By days",
                                            yaxis_title="Predicted Confirm Cases"
                                            )
     response['confidence_score'] = str(round(reg_poly.score(X, y) * 100, 2))
@@ -85,7 +85,7 @@ def polynomial_regression(x, y, days_to_predict, values):
 
 
 @st.cache(allow_output_mutation=True)
-def support_vector_regression(x, y, days_to_predict, values):
+def support_vector_regression(x, y, days_to_predict, values,prediction_for):
     response = {}
     response['same_future_data'] = False
     x = x.reshape(-1, 1)
@@ -105,7 +105,7 @@ def support_vector_regression(x, y, days_to_predict, values):
     response['predict_graph'] = plot_chart(Fx.flatten(), Fp.astype(int).flatten(),
                                            name="Prediction",
                                            color="Blue",
-                                           title="Future Prediction for Confirmed Cases By days",
+                                           title="Future Prediction for "+prediction_for+" Cases By days",
                                            yaxis_title="Predicted Confirm Cases"
                                            )
     response['confidence_score'] = str(round(reg_svr.score(Sx, Sy) * 100, 2))
@@ -115,7 +115,7 @@ def support_vector_regression(x, y, days_to_predict, values):
 
 
 @st.cache(allow_output_mutation=True)
-def decision_tree_regression(x, y, days_to_predict, values):
+def decision_tree_regression(x, y, days_to_predict, values,prediction_for):
     response = {}
     response['same_future_data'] = False
     x = x.reshape(-1, 1)
@@ -128,7 +128,7 @@ def decision_tree_regression(x, y, days_to_predict, values):
     response['predict_graph'] = plot_chart(Fx.flatten(), Fp.astype(int).flatten(),
                                            name="Prediction",
                                            color="Blue",
-                                           title="Future Prediction for Confirmed Cases By days",
+                                           title="Future Prediction for "+prediction_for+" Cases By days",
                                            yaxis_title="Predicted Confirm Cases"
                                            )
     response['confidence_score'] = str(round(reg_dec.score(x, y) * 100, 2))
@@ -139,7 +139,7 @@ def decision_tree_regression(x, y, days_to_predict, values):
 
 
 @st.cache(allow_output_mutation=True)
-def random_forest_regression(x, y, days_to_predict, values):
+def random_forest_regression(x, y, days_to_predict, values,prediction_for):
     response = {}
     response['same_future_data'] = False
     x = x.reshape(-1, 1)
@@ -153,7 +153,7 @@ def random_forest_regression(x, y, days_to_predict, values):
     response['predict_graph'] = plot_chart(Fx.flatten(), Fp.astype(int).flatten(),
                                            name="Prediction",
                                            color="Blue",
-                                           title="Future Prediction for Confirmed Cases By days",
+                                           title="Future Prediction for "+prediction_for+" Cases By days",
                                            yaxis_title="Predicted Confirm Cases"
                                            )
     response['confidence_score'] = str(round(reg_rand.score(x, y) * 100, 2))
