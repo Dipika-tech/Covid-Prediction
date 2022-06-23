@@ -88,7 +88,7 @@ def prediction_page():
             remark = st.empty()
         response = predictions_algo[options[i]](x, y,
                                                 days_to_predict,
-                                                values)
+                                                values, prediction_for)
         fir_line.write(response['fit_line_graph'])
         predict_gr.write(response['predict_graph'])
         confidence_score_line.markdown(
